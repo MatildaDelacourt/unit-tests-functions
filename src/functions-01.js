@@ -16,7 +16,8 @@
  * example: 'Buzz Lightyear' returns 'Lightyear, Buzz'
  */
 function nameShuffle(str) {
-  // write your code here & return value
+  const mystr = str.split(' ').reverse().join(', ');
+  return mystr;
 }
 
 /**
@@ -34,7 +35,9 @@ function nameShuffle(str) {
  * example: '&', '&' returns true
  */
 function isStrangePair(str1, str2) {
-  // write your code here & return value
+  const is1 = str1[0] === str2[str2.length - 1];
+  const is2 = str2[0] === str1[str1.length - 1];
+  return is1 && is2;
 }
 
 /**
@@ -46,7 +49,8 @@ function isStrangePair(str1, str2) {
  * example: '98.6%' returns 0.986
  */
 function convertToDecimal(percent) {
-  // write your code here & return value
+  const num = +percent.slice(0, -1);
+  return num / 100;
 }
 
 /**
@@ -59,7 +63,10 @@ function convertToDecimal(percent) {
  * example: [1, 2, 3, 4], [4, 3, 2, 1, 5] returns false
  */
 function checkSameSum(a1, a2) {
-  // write your code here & return value
+  const reducer = (previousValue, currentValue) => previousValue + currentValue;
+  const sum1 = a1.reduce(reducer);
+  const sum2 = a2.reduce(reducer);
+  return sum1 === sum2;
 }
 
 /**
@@ -70,7 +77,11 @@ function checkSameSum(a1, a2) {
  * must use a closure to save the username
  */
 function saveLogin(name) {
-  // write your code here
+  // eslint-disable-next-line func-names
+  const rememberMe = function () {
+    return name;
+  };
+  return rememberMe;
 }
 
 module.exports = {
@@ -78,5 +89,5 @@ module.exports = {
   isStrangePair,
   convertToDecimal,
   checkSameSum,
-  saveLogin
+  saveLogin,
 };
